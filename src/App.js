@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import Modal from "./Modal";
 
 function App() {
+  const modalRef = useRef();
+
+  const handleOpenModal = () => {
+    modalRef.current.openModal(); //openModal function is defined in the child component Modal
+  };
+
+  console.log("parent rendered");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+      <p>Parent Component</p>
+      <Modal ref={modalRef} />
+      <button onClick={handleOpenModal}>Open</button>
+    </main>
   );
 }
 
